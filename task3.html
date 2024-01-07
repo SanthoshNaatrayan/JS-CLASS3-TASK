@@ -1,0 +1,53 @@
+<html>
+ <head>
+   
+    <title>Displaying Country Details</title>
+ </head>
+ <body>
+   <h1 style="color: brown;"> Use the rest countries' API URL -> "https://restcountries.com/v3.1/all" and display all countries names , regions , sub-region and populations.</h1>
+
+   
+
+    <script>
+        //Creating an XMLHttpRequest object
+        const xhr = new XMLHttpRequest(); 
+
+        // Define the URL to which the request will be sent
+        const url="https://restcountries.com/v3.1/all" ; // Replace with your API endpoint
+
+        // This function is called whenever the state of the XMLHttpRequest changes
+        xhr.onreadystatechange = function(){
+         // XMLHttpRequest.DONE means the operation is complete
+         if(xhr.readyState === XMLHttpRequest.DONE)
+         //check if the request was successful (status code 200)
+           if(xhr.status === 200) {
+            //Parse the JSON response
+            //console.log(xhr.responseText)
+            const response = JSON.parse(xhr.responseText);
+            // console.log(response)
+             for(i=0;i<response.length;i++){
+               
+            console.log("NAME OF THE COUNTRY: "+response[i].name.common );
+            console.log("REGION: " +response[i].region);
+            console.log("SUB-REGION: " + response[i].subregion);
+            console.log("POPULATION: "+response[i].population )
+           
+             }
+           }
+         
+         else{
+            // Log an error message if the request fails
+            console.error("There was a problem with the request");
+         }
+            };
+
+        // Open a connection with the server
+        xhr.open('GET',url,true);  // Parameters : method, URL, asynchronous(true/false)
+
+        // Send the request
+        xhr.send(); // For Post request, you can pass data as an arguement to sen() 
+    </script>
+    
+    
+ </body>
+ </html>
