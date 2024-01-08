@@ -23,3 +23,7 @@ if(obj1.age === obj2.age){
 else{
     console.log("Ages are different")
 }
+
+//OR simply we can do as below
+
+// console.log(obj1.name === obj2.name && obj1.age === obj2.age);
